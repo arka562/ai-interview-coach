@@ -1,16 +1,47 @@
-# React + Vite
+# AI Interview Prep Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React/Vite frontend for the AI Interview Preparation Platform.
 
-Currently, two official plugins are available:
+## Frontend Project Bullet Points
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Built a protected React application with login, registration, dashboard, interview, resume, analytics, and history pages.
+- Used React Router to separate public authentication screens from protected application routes.
+- Managed authentication state with Redux Toolkit and reusable selector/hooks.
+- Connected the UI to the Express backend through a centralized Axios API client.
+- Created dashboard cards for total sessions, questions answered, average score, weak topics, quick actions, and recent activity.
+- Built resume upload and resume profile screens for personalized interview preparation.
+- Added interview session pages for viewing generated questions, submitting answers, and reviewing AI feedback.
+- Added session history and detail pages so users can review previous practice sessions.
+- Built analytics views for topic performance, weak areas, score trends, and AI recommendations.
+- Added browser speech recognition and speech synthesis hooks for voice-based interview practice.
+- Implemented reusable UI components such as buttons, cards, inputs, loaders, answer boxes, feedback panels, question lists, and session headers.
+- Added PDF report generation with jsPDF so users can export interview results and feedback.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- Vite
+- React Router
+- Redux Toolkit
+- Axios
+- Tailwind CSS
+- jsPDF
 
-## Expanding the ESLint configuration
+## Local Development
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm run dev
+```
+
+Create a `.env` file with:
+
+```txt
+VITE_API_BASE_URL=http://localhost:5000/api/v1
+```
+
+## Build
+
+```bash
+npm run build
+```
