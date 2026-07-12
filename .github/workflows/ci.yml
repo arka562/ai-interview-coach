@@ -78,5 +78,8 @@ jobs:
       - name: Build backend image
         run: docker build -t ai-interview-backend:ci ./backend
 
-      - name: Build frontend image
-        run: docker build -t ai-interview-frontend:ci ./frontend/ai_interview_prep
+      - name: Build frontend development image
+        run: docker build -t ai-interview-frontend-dev:ci ./frontend/ai_interview_prep
+
+      - name: Build frontend production image
+        run: docker build -f ./frontend/ai_interview_prep/Dockerfile.prod -t ai-interview-frontend:ci ./frontend/ai_interview_prep

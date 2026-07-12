@@ -24,6 +24,11 @@ The compose setup starts:
 - `backend`: Express API using `backend/Dockerfile`.
 - `frontend`: Vite React app using `frontend/ai_interview_prep/Dockerfile`.
 
+Frontend Dockerfiles:
+
+- `frontend/ai_interview_prep/Dockerfile`: development image used by Docker Compose. It runs Vite dev server on port `5173`.
+- `frontend/ai_interview_prep/Dockerfile.prod`: production image used by GHCR publishing. It builds static files and serves them with Nginx on port `80`.
+
 The backend reads `backend/.env` if it exists, then Docker Compose overrides local container-safe values for:
 
 ```txt
@@ -32,6 +37,39 @@ JWT_SECRET=docker_dev_secret_change_me
 MONGO_URI=mongodb://mongo:27017/ai_interview_prep
 CLIENT_URL=http://localhost:5173
 CLIENT_URLS=http://localhost:5173,http://127.0.0.1:5173
+```
+
+For non-Docker local frontend development, copy the frontend example file:
+
+```bash
+cd frontend/ai_interview_prep
+cp .env.example .env
+```
+
+Use this local value:
+
+```txt
+VITE_API_BASE_URL=http://localhost:5000/api/v1
+```
+
+Check container status and health:
+
+```bash
+docker compose ps
+```
+
+Follow logs for all services:
+
+```bash
+docker compose logs -f
+```
+
+Follow logs for one service:
+
+```bash
+docker compose logs -f backend
+docker compose logs -f frontend
+docker compose logs -f mongo
 ```
 
 Stop containers:
@@ -63,7 +101,7 @@ Jobs:
 
 - Backend: installs dependencies and checks JavaScript syntax.
 - Frontend: installs dependencies, runs lint, and builds production assets.
-- Docker Builds: builds backend and frontend Docker images to verify Dockerfiles.
+- Docker Builds: builds backend, frontend development, and frontend production Docker images to verify Dockerfiles.
 
 ## 3. Docker Image Publishing
 
@@ -86,6 +124,8 @@ ghcr.io/arka562/ai-interview-prep-frontend:latest
 ```
 
 It also publishes SHA-tagged images for traceable releases.
+
+The published frontend image uses `frontend/ai_interview_prep/Dockerfile.prod`, so it serves the built React app through Nginx rather than the Vite development server.
 
 This workflow uses GitHub's built-in `GITHUB_TOKEN`, so no Docker Hub token is required.
 

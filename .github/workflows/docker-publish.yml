@@ -62,6 +62,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./frontend/ai_interview_prep
+          file: ./frontend/ai_interview_prep/Dockerfile.prod
           push: true
           tags: ${{ steps.frontend-meta.outputs.tags }}
           labels: ${{ steps.frontend-meta.outputs.labels }}

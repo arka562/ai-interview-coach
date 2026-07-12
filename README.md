@@ -96,9 +96,10 @@ cp .env.example .env    # Fill in your keys
 npm run dev             # Runs on http://localhost:5000
 
 # 3. Frontend (new terminal)
-cd frontend
+cd frontend/ai_interview_prep
 npm install
-npm start               # Runs on http://localhost:3000
+cp .env.example .env    # Use local API URL during development
+npm run dev             # Runs on http://localhost:5173
 ```
 
 **Required `.env` variables (backend):**
@@ -109,6 +110,12 @@ JWT_SECRET=your_jwt_secret
 GROQ_API_KEY=your_groq_key
 GEMINI_API_KEY=your_gemini_key
 OPENROUTER_API_KEY=your_openrouter_key
+```
+
+**Frontend `.env` variable:**
+
+```env
+VITE_API_BASE_URL=http://localhost:5000/api/v1
 ```
 
 ---
