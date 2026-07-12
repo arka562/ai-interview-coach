@@ -44,6 +44,32 @@ VITE_API_BASE_URL=https://your-render-backend.onrender.com/api/v1
 6. Copy the Netlify URL and set it as `CLIENT_URL` in Render.
 7. Redeploy/restart the Render backend after changing `CLIENT_URL`.
 
+## GitHub Actions CI/CD
+
+This repo includes workflows for CI checks, Docker image publishing, and optional production deploys.
+
+Required GitHub repository secrets for production deploy:
+
+```txt
+NETLIFY_AUTH_TOKEN=your Netlify personal access token
+NETLIFY_SITE_ID=your Netlify site API ID
+VITE_API_BASE_URL=https://your-render-backend.onrender.com/api/v1
+RENDER_DEPLOY_HOOK_URL=your Render deploy hook URL
+```
+
+How to find the values:
+
+- Netlify auth token: Netlify user settings -> Applications -> Personal access tokens.
+- Netlify site ID: Netlify site settings -> General -> Site details -> Site ID.
+- Render deploy hook: Render web service -> Settings -> Deploy Hook.
+
+After these secrets are added, pushes to `main` or `master` will:
+
+- Run CI checks.
+- Build and publish Docker images to GitHub Container Registry.
+- Build and deploy the frontend to Netlify.
+- Trigger a backend redeploy on Render.
+
 ## MongoDB Atlas
 
 Make sure Render can connect:
