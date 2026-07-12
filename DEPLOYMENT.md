@@ -48,6 +48,8 @@ VITE_API_BASE_URL=https://your-render-backend.onrender.com/api/v1
 
 This repo includes workflows for CI checks, Docker image publishing, and optional production deploys.
 
+For the full local Docker and CI/CD guide, see `CI_CD_SETUP.md`.
+
 Required GitHub repository secrets for production deploy:
 
 ```txt

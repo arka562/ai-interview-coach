@@ -113,6 +113,18 @@ OPENROUTER_API_KEY=your_openrouter_key
 
 ---
 
+## 🐳 Docker & CI/CD
+
+This repo includes Docker Compose for local full-stack development and GitHub Actions workflows for CI, Docker image publishing, and deployment automation.
+
+```bash
+docker compose up --build
+```
+
+See [CI_CD_SETUP.md](CI_CD_SETUP.md) for the full Docker, GitHub Actions, Netlify, and Render setup.
+
+---
+
 ## 📁 Project Structure
 
 ```
